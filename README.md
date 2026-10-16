@@ -1,1 +1,1 @@
-# Mini-ITLyric
+# Mini-IT-Lyric
