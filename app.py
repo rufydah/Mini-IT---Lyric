@@ -1,7 +1,38 @@
-from flask import Flask, render_template
-app = Flask (__name__)
+from flask import Flask, render_template, request, redirect, url_for, session
+app = Flask(__name__)
+app.secret_key = 'lyric_secret_key' #needed for admin login sess
+ADMIN_USERNAME = 'admin'
+ADMIN_PASSWORD = "password123"
 @app.route('/')
-def home ():
-    return render_template('index.html')
+def home():
+    return render_template ('index.html')
+
+@app.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+    error = None
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+            session['admin_logged_in'] = True
+            return redirect(url_for('admin_dashboard'))
+        else:
+            error = 'Invalid admin credentials. Try again.'
+            return render_template('admin_login.html', error=error)
+    
+    return render_template('admin_login.html', error=error)
+
+@app.route('/admin/dashboard')
+def admin_dashboard ():
+    if not session.get ('admin_logged_in'):
+        return redirect(url_for('admin_login'))
+    return render_template ('admin_dashboard.html')
+@app.route ('/admin/logout')
+def admin_logout ():
+    session.pop('admin_logged_in', None)
+    return redirect(url_for('admin_login'))
+@app.route('/binder')
+def fan_binder():
+    return render_template('fan_binder.html')
 if __name__=='__main__':
     app.run(debug=True)
