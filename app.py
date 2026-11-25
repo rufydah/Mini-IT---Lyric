@@ -5,7 +5,7 @@ ADMIN_USERNAME = 'admin'
 ADMIN_PASSWORD = "password123"
 @app.route('/')
 def home():
-    return render_template ('index.html')
+    return render_template ('user_login.html')
 
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
