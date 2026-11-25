@@ -1,0 +1,28 @@
+<!DOCTYPE <html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register | Lyric (리릭)</title>
+</head>
+<body>
+    <!--Heading for register page-->
+    <h2>Create your Lyric account</h2>
+    <!--Form, use POST to send daat to backend-->
+    <form method="POST">
+        <!--Label for username input-->
+        <label>Username:</label>
+        <!--Text input box,name for backend to get data,required = cannot empty-->
+        <input type="text" name="username" required><br><br>
+        <!--Label for password input-->
+        <label>Password:</label>
+        <!--Password box, hide input content-->
+        <input type="password" name="password" required><br><br>
+        <!--Submit button, send form data-->
+        <button type="submit">Sign Up</button>
+    </form>
+    <!--Link jump to login page-->
+    <p>Already have an account? <a href="/user/login">Login here</a></p>
+    <!--Link jump to back to home page-->
+    <p><a href="/">Back to Home</a></p>
+</body>
+</html>
