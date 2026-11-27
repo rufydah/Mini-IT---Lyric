@@ -1,0 +1,30 @@
+<!--basic stuff-->
+<!DOCTYPE html> <!--tells browser this is a html file-->
+<html lang="en"> <!--start the html page and sets the language to english-->
+<head> <!--holds all the setup info of the page,tells the browsall the stuff that runs behind the scenes-->
+    <meta charset="UTF-8"> <!--allows special characters and symbols to display properly-->
+    <meta name="viewportt" content="width=device-width, initial-scale=1.0"> <!--is used to make the page scale (open) nicely on all screen sizes -->
+    <title> Profile- Lyric</title> <!--text shown in the browser tab-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"> <!--links the css file to this page aka user log in html-->
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <h1 class="brand-title">LYRIC</h1>
+        <div class="login-card">
+            <h2 class="card-heading">{{ username }} </h2>
+            <p><strong>Birthday:</strong> {{ birthday }}</p>
+            <p><strong>Collections</strong></p>
+            <a href="/binder" class="sign-in-btn">Photocards</a>
+            <a href="/binder" class="sign-in-btn">Notebook</a>
+
+            <p><strong>Notebook</strong></p>
+            <a href="/binder" class="sign-in-btn">Photocards</a>
+            <a href="/binder" class="sign-in-btn">Notebook</a>
+        </div>
+    </div>
+
+
+
+</body>
+

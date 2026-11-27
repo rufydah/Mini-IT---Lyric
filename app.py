@@ -50,6 +50,13 @@ def admin_register():
     if request.method == "POST":
         return redirect(url_for("admin_login"))
     return render_template("sign_up.html", role="admin")
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
+    return render_template(
+        "profile.html",
+        username=session.get("username", "user"),
+        birthday=session.get("birthday", " "),
+    )
 if __name__=='__main__':
     app.run(debug=True)
 
