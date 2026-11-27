@@ -1,0 +1,54 @@
+<!--basic stuff-->
+<!DOCTYPE html> <!--tells browser this is a html file-->
+<html lang="en"> <!--start the html page and sets the language to english-->
+<head> <!--holds all the setup info of the page,tells the browsall the stuff that runs behind the scenes-->
+    <meta charset="UTF-8"> <!--allows special characters and symbols to display properly-->
+    <meta name="viewportt" content="width=device-width, initial-scale=1.0"> <!--is used to make the page scale (open) nicely on all screen sizes -->
+    <title> {{ 'admin sign up' if role == 'admin' else 'create account'}} - Lyric</title> <!--text shown in the browser tab-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"> <!--links the css file to this page aka user log in html-->
+</head>
+
+<body class="{{ 'admin-page' if role == 'admin' else ' ' }}">
+    <div class="page-wrapper">
+        <h1 class="brand-title">LYRIC</h1>
+        <div class="login-card">
+            <h2 class="card-heading">{{ 'admin sign up' if role == 'admin' else 'create account'}}</h2>
+            <form method="POST" class="login-form">
+                <div class="input-group">
+                    <input type="text" name="username" placeholder="username" required>
+                </div>
+                
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="email" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="password" required>
+                </div>
+
+                <div class="input-group">
+                    <select name="question" required>
+                        <option value="">Choose a security question</option>
+                        <option value="pet">Your first pets name</option>
+                        <option value="car">Your dream car</option>
+                        <option value="school">Your elementary school name</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="answer" placeholder="security answer" required>
+                </div>
+
+                <button type="submit" class="sign-in-btn">Create account</button>
+
+                <div class="form-links">
+                    <a href="{{ '/admin/login' if role == 'admin' else '/' }}">Back to sign in</a>
+                </div>
+
+            
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>

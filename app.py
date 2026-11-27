@@ -18,9 +18,9 @@ def admin_login():
             return redirect(url_for('admin_dashboard'))
         else:
             error = 'Invalid admin credentials. Try again.'
-            return render_template('admin_login.html', error=error)
+            return render_template('login_admin.html', error=error)
     
-    return render_template('admin_login.html', error=error)
+    return render_template('login_admin.html', error=error)
 
 @app.route('/admin/dashboard')
 def admin_dashboard ():
@@ -34,5 +34,21 @@ def admin_logout ():
 @app.route('/binder')
 def fan_binder():
     return render_template('fan_binder.html')
+@app.route("/forgot-password", methods=["GET", "POST"])
+def user_forgot_password():
+    return render_template("forgot_password.html", role="user")
+@app.route("/admin/forgot-password", methods=["GET", "POST"])
+def admin_forgot_password():
+    return render_template("forgot_password.html", role="admin")
+@app.route("/register", methods=["GET", "POST"])
+def user_register():
+    if request.method == "POST":
+        return redirect(url_for("home"))
+    return render_template("sign_up.html", role="user")
+@app.route("/admin/register", methods=["GET", "POST"])
+def admin_register():
+    if request.method == "POST":
+        return redirect(url_for("admin_login"))
+    return render_template("sign_up.html", role="admin")
 if __name__=='__main__':
     app.run(debug=True)

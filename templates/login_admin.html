@@ -1,0 +1,36 @@
+<!--basic stuff-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <metaname="viewpoint content="width=device-width, initial scale=1.0"></metaname>
+        <title>Admin Sign In - LYRIC</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    </head>
+
+    <body class="admin page">
+        <div class="page-wrapper">
+            <h1 classs="brand-title">LYRIC</h1>
+            <p class="admin-subtitle">ADMIN PORTAL</p>
+
+            <div class="login-card">
+                <h2 class="card-heading">Admin Sign In</h2>
+
+                <form action="/admin/login" method="POST" class="log-in form">
+                    <div class="input-group">
+                        <input type="text" name="admin_id" placeholder="username" required>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" name="password" placeholder="password" required>
+                    </div>
+
+                    <div class="form-links">
+                        <a href="/admin/forgot-password">Forget Password</a>
+                        <a href="/admin/register">Register New Admin</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

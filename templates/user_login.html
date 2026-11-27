@@ -1,18 +1,42 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <div>
-            <p>Welcome to</p>
-            <h1>Lyric</h1>
-            <!--make it pretty once theme is decided-->
-        </div>
+<!--basic stuff-->
+<!DOCTYPE html> <!--tells browser this is a html file-->
+<html lang="en"> <!--start the html page and sets the language to english-->
+<head> <!--holds all the setup info of the page, <!--tells the browsall the stuff that runs behind the scenes-->
+    <meta charset="UTF-8"> <!--allows special characters and symbols to display properly-->
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0"> <!--is used to make the page scale (open) nicely on all screen sizes -->
+    <title>User Sign In - Lyric</title> <!--text shown in the browser tab-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"> <!--links the css file to this page aka user log in html-->
+</head>
 
-        <div>
-            <h2>Sign in</h2>
-            <from action="/login" method="POST">
-                <!-- from is a container like a box that holds stuff such as email and password and submit button, and the entire box is sent togeather when user clicks sogn in-->
-                 <div></div>
-            </from>
+    <body> <!--everything visible on the screen is insidw body-->
+        <div class="pager wrapper"> <!--centers eveything on the page aka centers the log in layout vertically and horizonatally-->
+            <h1 class="brand-title">LYRIC</h1> <!--see if later change to korean name-->
+
+            <div class="login-card"> <!--box that holds the sign in stuff, we name the box log in card and then in csswe can tell it like class= login and be like make this orane  or rounded corners or fosted blue etc-->
+                <h2 class="card-heading">User Sign In</h2> <!--class=card heading is a label too, its inside the bix, user sign in is the text that willl be displayed-->
+
+                <form action="/login" method="POST" class="login-form>"> <!--from is like a piece f paper that holds everything, action= log in is handing the slip toaapp.py code and method post is like putting the slip in a envolupe instead of puttimg it on a billboard everyone can see-->
+                    <div class="input group">
+                        <input type="text" name="username" placeholder="username" required> <!--text means itll show up as regular letters,placeholder is the grey text that appears when nothing is typed in a box, required means must fill the box-->
+                    </div>
+
+                    <div class="input-group"> <!--div class is a box label is input group-->
+                        <input type="password" name="password" placeholder="password" required> <!--reuired means it is must to fill box,placeholder is the grey test that will appear in the box when nothing is writtrn,type password hides the letter and shows them as dots-->
+                    </div>
+
+                    <button type="submit" class="sign-in-btn">Sign in</button> <!--rond button shape that submits the form-->
+
+                    <div class="form-links"> <!--bos aka container for links-->
+                        <a href="/forgot-password">Forgot Password?</a> <!--link that takes u to reset password page-->
+                        <a href="/register">Create Account</a> <!--link that takes you to sign up page-->
+                        <a href="/admin/login">Admin Page</a>
+                    </div>
+                </form>
+            </div>
+
+            <p class="footer-note">Welcome back!</p> <!--small tagline at the bottom-->
         </div>
     </body>
-</html>
+    </html>
+
+            
