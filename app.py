@@ -52,3 +52,20 @@ def admin_register():
     return render_template("sign_up.html", role="admin")
 if __name__=='__main__':
     app.run(debug=True)
+
+
+@app.route('admin/forgot', methods=['GET','POST'])
+def admin_forgot():
+    global ADMIN_PASSWORD
+    message = None
+    error = None
+    if request.method == 'POST':
+        username = request.form['username']
+        recovery_code = request.form ['recovery_code']
+        new_password = request.form ['new_password']
+        if username == ADMIN_USERNAME and recovery_code == 'LYRIC2026':
+            ADMIN_PASSWORD = new_password
+            message = 'Password updated successfully! You may now log in.'
+        else:
+            error = 'Invalid username or recovery code.'
+    return render_template('admin_forgot.html', message=message, error=error)
