@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+from user_auth import auth_bp, db, User
 app = Flask(__name__)
 app.secret_key = 'lyric_secret_key' #needed for admin login sess
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user_db.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
+app.register_blueprint(auth_bp, url_prefix="/user")
 ADMIN_USERNAME = 'admin'
 ADMIN_PASSWORD = "password123"
 @app.route('/')
@@ -34,5 +39,7 @@ def admin_logout ():
 @app.route('/binder')
 def fan_binder():
     return render_template('fan_binder.html')
+with app.app_context():
+    db.create_all()
 if __name__=='__main__':
     app.run(debug=True)
